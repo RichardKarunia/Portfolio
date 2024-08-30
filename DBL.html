@@ -1,0 +1,104 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<script src="https://kit.fontawesome.com/147e53a236.js" crossorigin="anonymous"></script>
+	<script defer src="app.js"></script>
+	<style type="text/css">
+		body::-webkit-scrollbar{
+	    	display: none;
+	  	}
+
+	  	@font-face {
+			font-family: "manrope";
+			src: url("Manrope-Regular.ttf");
+		}
+
+		body {
+		  height: 100vh;
+		  width: 100vw;
+		  background-color: #0d1b21;
+		  margin: 0rem;
+		  font-family: "manrope";
+		}
+
+		#back {
+			font-size:19;
+			color:f5f5f5;/* -- white -- */
+			position:fixed;
+			transform: translate(2vw, 3vh); 
+		}
+
+		#title {
+			font-size:45;
+			color:f5f5f5;/* -- white -- */
+			position:absolute;
+			transform: translate(-100%); 
+		}
+
+		.hidden {	
+			opacity: 1;
+			transition: all 1s;
+		}
+
+		.show {
+			opacity: 0;
+			transform: translate(100%);
+		}
+
+		.container {
+			  text-align: center;
+			  color: var(--color);
+			  width: 100%;
+			  min-height: 100vh;
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			  justify-content: center;
+			  background-image: url(DBLfoto/IMG_6416.JPG);
+			  background-size: cover;
+			  background-position: center;
+			  background-attachment: fixed;
+		}
+
+		.image {
+			width: 128vmin;
+			height: 72vmin;
+			object-fit: cover;
+			object-position: center;
+			background-color:black;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		
+  		.blank,
+		.other {
+		  width: 100%;
+		  min-height: 40vh;
+		  background-color: var(--color);
+		}
+	</style>
+</head>
+<body>
+	<div id="back">
+			<a href="portfolio.html" style="text-decoration:none; color:f5f5f5">Back</a>
+		</div>
+	<div class="container">
+		<div id="title" class="hidden">
+			<h1>DBL</h1>
+		</div>
+	</div>
+
+	<div class="blank"></div>
+
+	<img class="image" src="DBLfoto/insup.JPG" draggable="false" />
+
+	<div class="blank"></div>
+	
+	<h1 class="hidden"> lorem ipsum </h1>
+
+</body>
+</html>
