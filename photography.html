@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/147e53a236.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="stylephotography.css">
+</head>
+<body>
+	<div class="home">
+		<h1>Hi there, I'm Richard!</h1>
+		<p>I take photos for fun, fame, and freelance.<br> Here are some of my best<br></p>
+		<p style="color:#e5e5e5">Drag to explore the gallery!</p><br>
+	</div>
+	
+	<!--NAVBAR-->
+	<ul class="nav justify-content-end" style="z-index:-1;">
+		<li class="nav-item">
+			<a class="nav-link" href="about.html">About</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="photography.html">Photography</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="contact.html">Contact</a>
+		</li>
+		<li class="nav-item" style="margin-top: 3vh; margin-right:2.5vw; margin-left:1vw; color:ffffff;">
+			<a href="https://www.instagram.com/richard_karunia/"  target="_blank" ><i class="fa-brands fa-instagram fa-lg"></i></a> &nbsp
+			<a href="https://github.com/RichardKarunia" ><i class="fa-brands fa-github fa-lg"> </i></a> &nbsp
+			<a href="https://www.linkedin.com/in/richard-karunia-0073a5208/" target="_blank" ><i class="fa-brands fa-linkedin fa-lg"></i></a>
+		</li>
+	</ul>
+		
+	<!--INTRO ON TOP LEFT-->
+	<div class="logo">
+		<a href="index.html">Richard Karunia</a>
+		<p>Photographer &nbsp &nbsp | &nbsp &nbsp Programmer &nbsp &nbsp | &nbsp &nbsp Student</p>
+	</div>
+	
+	<div class="end">
+		<h1>Like my work?</h1>
+		<p style="font-size:16px;">Send me a message at:<br></p>
+			<a href="mailto: richardkarunia@gmail.com" ><i class="fa-regular fa-envelope fa-2xl"></i></a> 
+			<a style="font-size:20px">richardkarunia@gmail.com</a>
+	</div>
+
+	<div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+
+	  <a draggable="false" > <img class="image" src="photos/IMG_9273_compressed.jpg" draggable="false" /></a>
+
+	  <a draggable="false" ><img class="image" src="photos/IMG_6316_compressed.jpg" draggable="false" /></a>
+
+	  <a draggable="false" ><img class="image" src="photos/1Q5A3548_compressed.jpg" draggable="false" /></a>
+	  
+	  <a draggable="false" ><img class="image" src="photos/1Q5A5412_compressed.jpg" draggable="false" /></a>
+	
+	  <a draggable="false" ><img class="image" src="photos/1Q5A6085-5_compressed.jpg" draggable="false" /></a>
+	
+	  <a draggable="false" ><img class="image" src="photos/1Q5A8255-Enhanced-NR_compressed.jpg" draggable="false" /></a>
+	
+	  <a draggable="false" ><img class="image" src="photos/_Q5A8934_compressed.jpg" draggable="false" /></a>
+	
+	  <a draggable="false" ><img class="image" src="photos/1Q5A2397_compressed.jpg" draggable="false" /></a>
+	</div>
+	
+</body>
+<script>
+	const track = document.getElementById("image-track");
+
+	const handleOnDown = e => track.dataset.mouseDownAt = e.clientX;
+
+	const handleOnUp = () => {
+	  track.dataset.mouseDownAt = "0";  
+	  track.dataset.prevPercentage = track.dataset.percentage;
+	}
+
+	const handleOnMove = e => {
+	  if(track.dataset.mouseDownAt === "0") return;
+	  
+	  const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+			maxDelta = window.innerWidth / 2;
+	  
+	  const percentage = (mouseDelta / maxDelta) * -100,
+			nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage,
+			nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+	  
+	  track.dataset.percentage = nextPercentage;
+	  
+	  track.animate({
+		transform: `translate(${nextPercentage}%, -50%)`
+	  }, { duration: 2200, fill: "forwards" });
+	  
+	  for(const image of track.getElementsByClassName("image")) {
+		image.animate({
+		  objectPosition: `${100 + nextPercentage}% center`
+		}, { duration: 2200, fill: "forwards" });
+	  }
+	}
+	window.onmousedown = e => handleOnDown(e);
+
+	window.ontouchstart = e => handleOnDown(e.touches[0]);
+
+	window.onmouseup = e => handleOnUp(e);
+
+	window.ontouchend = e => handleOnUp(e.touches[0]);
+
+	window.onmousemove = e => handleOnMove(e);
+
+	window.ontouchmove = e => handleOnMove(e.touches[0]);
+</script>
+</html>

@@ -1,0 +1,49 @@
+/*contact.html CSS file*/
+
+/*FONTS*/
+@font-face {
+	font-family: "manrope";
+	src: url("Manrope-Regular.ttf");
+}
+@font-face {
+	font-family: "lemon";
+	src: url("LEMONMILK-Regular.otf")
+}
+
+/*NAVBAR*/
+.nav-item {
+	font-size: 20px;
+	font-family: manrope;
+	margin-left: 1.5vw;
+	margin-top: 2vh;
+}
+.nav-link{
+	color: black;
+}
+i{
+	color: black;
+	margin-right: 1vw;
+}
+i:hover{
+	color: #1794fe;
+}
+
+/*LOGO*/
+.logo {
+	margin-top: -5vh;
+	margin-left: 3vw;
+	color: black;
+	z-index: -1;
+}
+.logo a {
+	font-family: lemon;
+	color: inherit;
+	text-decoration: inherit;
+	font-size: 40px;
+}
+.logo a:hover {
+	color: #1794fe;
+}
+.logo p {
+	font-family: manrope;
+}
